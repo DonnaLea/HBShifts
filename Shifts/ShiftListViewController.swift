@@ -10,10 +10,13 @@ import UIKit
 
 class ShiftListViewController: UITableViewController {
 
-//  let shifts: [Shift]
+  var shifts: [Shift] = []
+
+  private struct Key {
+    static let shifts = "shifts"
+  }
 
   override init(style: UITableViewStyle) {
-    super.init(style: style)
 
     if let path = Bundle.main.path(forResource: "shifts", ofType: "json") {
 
@@ -22,14 +25,18 @@ class ShiftListViewController: UITableViewController {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.shiftFormat)
         do {
-          let shifts = try decoder.decode(Dictionary<String, [Shift]>.self, from: data)
-          print(shifts)
+          let dictionary = try decoder.decode(Dictionary<String, [Shift]>.self, from: data)
+          if let shifts = dictionary[Key.shifts] {
+            self.shifts = shifts
+            print(shifts)
+          }
         } catch {
           print("error: \(error)")
         }
       }
-
     }
+
+    super.init(style: style)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -46,6 +53,8 @@ class ShiftListViewController: UITableViewController {
     // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
 
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier())
+
   }
 
   override func didReceiveMemoryWarning() {
@@ -57,23 +66,26 @@ class ShiftListViewController: UITableViewController {
 
   override func numberOfSections(in tableView: UITableView) -> Int {
     // #warning Incomplete implementation, return the number of sections
-    return 0
+    return 1
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return 0
+    return shifts.count
   }
 
-  /*
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier(), for: indexPath)
 
-      // Configure the cell...
+    // Configure the cell...
+    let shift = shifts[indexPath.row]
+    cell.textLabel?.text = "\(shift.name) (\(shift.role)) "
+//    cell.backgroundColor = shift.color
+//    cell.textLabel?.textColor = .white
+    cell.textLabel?.textColor = shift.color
 
-      return cell
+    return cell
   }
-  */
 
   /*
   // Override to support conditional editing of the table view.

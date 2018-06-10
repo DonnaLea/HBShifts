@@ -17,6 +17,7 @@
 		675E5B2820CB2E480078BCCF /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2720CB2E480078BCCF /* Shift.swift */; };
 		675E5B2A20CB30E50078BCCF /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2920CB30E50078BCCF /* Color+extension.swift */; };
 		675E5B2F20CB93900078BCCF /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */; };
+		675E5B3120CCFA910078BCCF /* UITableViewCell+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B3020CCFA910078BCCF /* UITableViewCell+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		675E5B2720CB2E480078BCCF /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		675E5B2920CB30E50078BCCF /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
+		675E5B3020CCFA910078BCCF /* UITableViewCell+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				675E5B2920CB30E50078BCCF /* Color+extension.swift */,
 				675E5B2320CB2B960078BCCF /* shifts.json */,
 				675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */,
+				675E5B3020CCFA910078BCCF /* UITableViewCell+extension.swift */,
 				675E5AFC20CB2B650078BCCF /* Assets.xcassets */,
 				675E5AFE20CB2B650078BCCF /* LaunchScreen.storyboard */,
 				675E5B0120CB2B650078BCCF /* Info.plist */,
@@ -270,6 +273,7 @@
 				675E5B2F20CB93900078BCCF /* DateFormatter+extension.swift in Sources */,
 				675E5B2820CB2E480078BCCF /* Shift.swift in Sources */,
 				675E5B2620CB2C650078BCCF /* ShiftListViewController.swift in Sources */,
+				675E5B3120CCFA910078BCCF /* UITableViewCell+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
