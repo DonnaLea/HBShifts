@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		675E5AF620CB2B620078BCCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5AF520CB2B620078BCCF /* AppDelegate.swift */; };
-		675E5AF820CB2B620078BCCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5AF720CB2B620078BCCF /* ViewController.swift */; };
-		675E5AFB20CB2B620078BCCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675E5AF920CB2B620078BCCF /* Main.storyboard */; };
 		675E5AFD20CB2B650078BCCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 675E5AFC20CB2B650078BCCF /* Assets.xcassets */; };
 		675E5B0020CB2B650078BCCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675E5AFE20CB2B650078BCCF /* LaunchScreen.storyboard */; };
 		675E5B0B20CB2B650078BCCF /* ShiftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B0A20CB2B650078BCCF /* ShiftsTests.swift */; };
 		675E5B1620CB2B660078BCCF /* ShiftsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B1520CB2B660078BCCF /* ShiftsUITests.swift */; };
+		675E5B2420CB2B960078BCCF /* shifts.json in Resources */ = {isa = PBXBuildFile; fileRef = 675E5B2320CB2B960078BCCF /* shifts.json */; };
+		675E5B2620CB2C650078BCCF /* ShiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2520CB2C650078BCCF /* ShiftListViewController.swift */; };
+		675E5B2820CB2E480078BCCF /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2720CB2E480078BCCF /* Shift.swift */; };
+		675E5B2A20CB30E50078BCCF /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2920CB30E50078BCCF /* Color+extension.swift */; };
+		675E5B2F20CB93900078BCCF /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +39,6 @@
 /* Begin PBXFileReference section */
 		675E5AF220CB2B620078BCCF /* Shifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		675E5AF520CB2B620078BCCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		675E5AF720CB2B620078BCCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		675E5AFA20CB2B620078BCCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		675E5AFC20CB2B650078BCCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		675E5AFF20CB2B650078BCCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		675E5B0120CB2B650078BCCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,11 @@
 		675E5B1120CB2B660078BCCF /* ShiftsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShiftsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		675E5B1520CB2B660078BCCF /* ShiftsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsUITests.swift; sourceTree = "<group>"; };
 		675E5B1720CB2B660078BCCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		675E5B2320CB2B960078BCCF /* shifts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = shifts.json; sourceTree = "<group>"; };
+		675E5B2520CB2C650078BCCF /* ShiftListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftListViewController.swift; sourceTree = "<group>"; };
+		675E5B2720CB2E480078BCCF /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		675E5B2920CB30E50078BCCF /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
+		675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +104,11 @@
 			isa = PBXGroup;
 			children = (
 				675E5AF520CB2B620078BCCF /* AppDelegate.swift */,
-				675E5AF720CB2B620078BCCF /* ViewController.swift */,
-				675E5AF920CB2B620078BCCF /* Main.storyboard */,
+				675E5B2520CB2C650078BCCF /* ShiftListViewController.swift */,
+				675E5B2720CB2E480078BCCF /* Shift.swift */,
+				675E5B2920CB30E50078BCCF /* Color+extension.swift */,
+				675E5B2320CB2B960078BCCF /* shifts.json */,
+				675E5B2E20CB93900078BCCF /* DateFormatter+extension.swift */,
 				675E5AFC20CB2B650078BCCF /* Assets.xcassets */,
 				675E5AFE20CB2B650078BCCF /* LaunchScreen.storyboard */,
 				675E5B0120CB2B650078BCCF /* Info.plist */,
@@ -229,9 +238,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				675E5B2420CB2B960078BCCF /* shifts.json in Resources */,
 				675E5B0020CB2B650078BCCF /* LaunchScreen.storyboard in Resources */,
 				675E5AFD20CB2B650078BCCF /* Assets.xcassets in Resources */,
-				675E5AFB20CB2B620078BCCF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				675E5AF820CB2B620078BCCF /* ViewController.swift in Sources */,
 				675E5AF620CB2B620078BCCF /* AppDelegate.swift in Sources */,
+				675E5B2A20CB30E50078BCCF /* Color+extension.swift in Sources */,
+				675E5B2F20CB93900078BCCF /* DateFormatter+extension.swift in Sources */,
+				675E5B2820CB2E480078BCCF /* Shift.swift in Sources */,
+				675E5B2620CB2C650078BCCF /* ShiftListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		675E5AF920CB2B620078BCCF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				675E5AFA20CB2B620078BCCF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		675E5AFE20CB2B650078BCCF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
