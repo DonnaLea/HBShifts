@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
 
+    let shiftListViewController = ShiftListViewController(style: .plain)
+    let navigationController = UINavigationController(rootViewController: shiftListViewController)
+
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.backgroundColor = .white
-    window?.rootViewController = ShiftListViewController(style: .plain)
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
 
     return true

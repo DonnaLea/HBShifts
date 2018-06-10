@@ -16,6 +16,10 @@ class ShiftListViewController: UITableViewController {
     static let shifts = "shifts"
   }
 
+  private struct Strings {
+    static let shifts = "Shifts"
+  }
+
   override init(style: UITableViewStyle) {
 
     if let path = Bundle.main.path(forResource: "shifts", ofType: "json") {
@@ -30,7 +34,6 @@ class ShiftListViewController: UITableViewController {
             self.shifts = shifts.sorted { lhs, rhs -> Bool in
               return lhs.endDate > rhs.endDate
             }
-            print(shifts)
           }
         } catch {
           print("error: \(error)")
@@ -39,6 +42,7 @@ class ShiftListViewController: UITableViewController {
     }
 
     super.init(style: style)
+    title = Strings.shifts
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -52,8 +56,7 @@ class ShiftListViewController: UITableViewController {
     // self.clearsSelectionOnViewWillAppear = false
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed(sender:)))
 
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier())
 
@@ -67,12 +70,10 @@ class ShiftListViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
     return 1
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
     return shifts.count
   }
 
@@ -90,8 +91,6 @@ class ShiftListViewController: UITableViewController {
     let endTime = DateFormatter.shiftEndTimeRangeFormatter.string(from: shift.endDate)
     cell.textLabel?.text = "\(date) \(startTime)\(endTime)"
     cell.detailTextLabel?.text = "\(shift.name) (\(shift.role))"
-//    cell.backgroundColor = shift.color
-//    cell.textLabel?.textColor = .white
     cell.detailTextLabel?.textColor = shift.color
 
     return cell
@@ -142,4 +141,11 @@ class ShiftListViewController: UITableViewController {
   }
   */
 
+  // MARK: - Actions
+
+  @objc func addButtonPressed(sender: Any) {
+    let createShiftViewController = CreateShiftViewController()
+    let navigationController = UINavigationController(rootViewController: createShiftViewController)
+    present(navigationController, animated: true, completion: nil)
+  }
 }
