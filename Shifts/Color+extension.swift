@@ -15,13 +15,14 @@ extension UIColor {
     case "red":
       self.init(red: 1, green: 0, blue: 0, alpha: 1)
     case "blue":
-      self.init(red: 0, green: 0, blue: 1, alpha: 1)
+      // Navy.
+      self.init(red: 0, green: 0, blue: 0.5, alpha: 1)
     case "green":
-      self.init(red: 0, green: 1, blue: 0, alpha: 1)
-    default: //white
+      // Forest green.
+      self.init(red: 34/255, green: 139/255, blue: 34/255, alpha: 1)
+    default: // White.
       self.init(red: 1, green: 1, blue: 1, alpha: 1)
     }
-
   }
 
 }

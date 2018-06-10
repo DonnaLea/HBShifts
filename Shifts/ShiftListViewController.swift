@@ -23,11 +23,13 @@ class ShiftListViewController: UITableViewController {
       if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
         print("data")
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(.shiftFormat)
+        decoder.dateDecodingStrategy = .formatted(.shiftDateInFormatter)
         do {
           let dictionary = try decoder.decode(Dictionary<String, [Shift]>.self, from: data)
           if let shifts = dictionary[Key.shifts] {
-            self.shifts = shifts
+            self.shifts = shifts.sorted { lhs, rhs -> Bool in
+              return lhs.endDate > rhs.endDate
+            }
             print(shifts)
           }
         } catch {
@@ -75,14 +77,22 @@ class ShiftListViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier(), for: indexPath)
+    var cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier(), for: indexPath)
+
+    if cell.detailTextLabel == nil {
+      cell = UITableViewCell(style: .subtitle, reuseIdentifier: UITableViewCell.reuseIdentifier())
+    }
 
     // Configure the cell...
     let shift = shifts[indexPath.row]
-    cell.textLabel?.text = "\(shift.name) (\(shift.role)) "
+    let date = DateFormatter.shiftDateOutFormatter.string(from: shift.startDate)
+    let startTime = DateFormatter.shiftBeginTimeRangeFormatter.string(from: shift.startDate)
+    let endTime = DateFormatter.shiftEndTimeRangeFormatter.string(from: shift.endDate)
+    cell.textLabel?.text = "\(date) \(startTime)\(endTime)"
+    cell.detailTextLabel?.text = "\(shift.name) (\(shift.role))"
 //    cell.backgroundColor = shift.color
 //    cell.textLabel?.textColor = .white
-    cell.textLabel?.textColor = shift.color
+    cell.detailTextLabel?.textColor = shift.color
 
     return cell
   }
