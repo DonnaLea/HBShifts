@@ -22,15 +22,17 @@ class ShiftListViewController: UITableViewController {
 
   override init(style: UITableViewStyle) {
 
+    // Read shifts.json file.
     if let path = Bundle.main.path(forResource: "shifts", ofType: "json") {
 
       if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-        print("data")
+        // Decode file into JSON.
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.shiftDateInFormatter)
         do {
           let dictionary = try decoder.decode(Dictionary<String, [Shift]>.self, from: data)
           if let shifts = dictionary[Key.shifts] {
+            // Sort shifts based on the end of a shift to be most recently finished shift first.
             self.shifts = shifts.sorted { lhs, rhs -> Bool in
               return lhs.endDate > rhs.endDate
             }
@@ -85,6 +87,7 @@ class ShiftListViewController: UITableViewController {
     }
 
     // Configure the cell...
+    // Displaying date on one line and name and role on another line made the data more readable.
     let shift = shifts[indexPath.row]
     let date = DateFormatter.shiftDateOutFormatter.string(from: shift.startDate)
     let startTime = DateFormatter.shiftBeginTimeRangeFormatter.string(from: shift.startDate)
@@ -95,51 +98,6 @@ class ShiftListViewController: UITableViewController {
 
     return cell
   }
-
-  /*
-  // Override to support conditional editing of the table view.
-  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      // Return false if you do not want the specified item to be editable.
-      return true
-  }
-  */
-
-  /*
-  // Override to support editing the table view.
-  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-          // Delete the row from the data source
-          tableView.deleteRows(at: [indexPath], with: .fade)
-      } else if editingStyle == .insert {
-          // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-      }
-  }
-  */
-
-  /*
-  // Override to support rearranging the table view.
-  override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-  }
-  */
-
-  /*
-  // Override to support conditional rearranging of the table view.
-  override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-      // Return false if you do not want the item to be re-orderable.
-      return true
-  }
-  */
-
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
-  }
-  */
 
   // MARK: - Actions
 
